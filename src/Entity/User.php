@@ -4,11 +4,11 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -25,9 +25,10 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @var string[]|Collection
+     * @ORM\Column(type="array")
      */
-    private $roles = [];
+    private $roles;
 
     /**
      * @var string The hashed password
@@ -65,6 +66,7 @@ class User implements UserInterface
         $this->enfants = new ArrayCollection();
         $this->classes = new ArrayCollection();
         $this->messages = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,16 +101,23 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles->toArray();
     }
 
-    public function setRoles(array $roles): self
+    public function addRole($role): self
     {
-        $this->roles = $roles;
+        if (!$this->roles->contains($role)) {
+            $this->roles->add($role);
+        }
+
+        return $this;
+    }
+
+    public function removeRole($role): self
+    {
+        if ($this->roles->contains($role)) {
+            $this->roles->removeElement($role);
+        }
 
         return $this;
     }

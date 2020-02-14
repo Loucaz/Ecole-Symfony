@@ -48,7 +48,7 @@
                             <tr>
                                 <td>{{ classe.maitre.nom }}</td>
                                 <td>{{ classe.maitre.prenom }}</td>
-                                <td>Contacter</a></td>
+                                <td><a href="{{ path('message_new',{'idUser':idUser}) }}">Contacter</a></td>
                             </tr>
                         {% endif %}
 
