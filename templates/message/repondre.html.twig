@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Message{% endblock %}
+
+{% block body %}
+    <h1>Répondre</h1>
+
+    Destinataire : {{ message.destinataire }} <br>
+    Envoyeur : {{ message.envoyeur }}
+    {{ include('message/_form.html.twig') }}
+
+    <a href="{{ path('message_index', {'id':idUser}) }}">Retour</a>
+{% endblock %}

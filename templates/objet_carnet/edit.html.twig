@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ObjetCarnet{% endblock %}
+
+{% block body %}
+    <h1>Edit ObjetCarnet</h1>
+
+    {{ include('objet_carnet/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('objet_carnet_index') }}">back to list</a>
+
+    {{ include('objet_carnet/_delete_form.html.twig') }}
+{% endblock %}

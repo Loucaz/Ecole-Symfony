@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enfant{% endblock %}
+
+{% block body %}
+    <h1>Enfant</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ enfant.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ enfant.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ enfant.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Carnet de correspondance</th>
+
+            <td>{{ enfant.carnetDeCorrespondance.id }}</td>
+            <td><a href="{{ path('carnet_de_correspondance_show', {'id': enfant.carnetDeCorrespondance.id}) }}">Voir</a></td>
+        </tr>
+        <tr>
+            <th>Photo de classe</th>
+            <td>
+                <table>
+                    {% for classe in enfant.classes %}
+                        <tr>
+                            <td>{{ classe.nom }}</td>
+                            <td>{{ classe.annee }}</td>
+                            <td>Voir</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <th>Maître</th>
+            <td>
+                <table>
+                    {% for classe in enfant.classes %}
+                        {% if classe.etat == true %}
+                            <tr>
+                                <td>{{ classe.maitre.nom }}</td>
+                                <td>{{ classe.maitre.prenom }}</td>
+                                <td>Contacter</a></td>
+                            </tr>
+                        {% endif %}
+
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <th>Parents</th>
+            <td>
+                <table>
+                    {% for parent in enfant.parents %}
+                        <tr>
+                            <td>{{ parent.nom }}</td>
+                            <td>{{ parent.prenom}}</td>
+                            <td><a href="{{ path('user_show', {'id': parent.id}) }}">Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <a href="{{ path('user_show', {'id':idUser}) }}">Retour</a>
+
+    <a href="{{ path('enfant_edit', {'id': enfant.id}) }}">edit</a>
+
+    {{ include('enfant/_delete_form.html.twig') }}
+{% endblock %}

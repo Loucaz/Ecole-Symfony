@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarnetDeCorrespondance index{% endblock %}
+
+{% block body %}
+    <h1>CarnetDeCorrespondance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carnet_de_correspondance in carnet_de_correspondances %}
+            <tr>
+                <td>{{ carnet_de_correspondance.id }}</td>
+                <td>{{ carnet_de_correspondance.etat ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('carnet_de_correspondance_show', {'id': carnet_de_correspondance.id}) }}">show</a>
+                    <a href="{{ path('carnet_de_correspondance_edit', {'id': carnet_de_correspondance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('carnet_de_correspondance_new') }}">Create new</a>
+{% endblock %}

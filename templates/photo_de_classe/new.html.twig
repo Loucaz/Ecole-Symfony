@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PhotoDeClasse{% endblock %}
+
+{% block body %}
+    <h1>Create new PhotoDeClasse</h1>
+
+    {{ include('photo_de_classe/_form.html.twig') }}
+
+    <a href="{{ path('photo_de_classe_index') }}">back to list</a>
+{% endblock %}

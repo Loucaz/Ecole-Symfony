@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message index{% endblock %}
+
+{% block body %}
+    <h1>Message index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Envoyeur</th>
+                <th>Destinataire</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.titre }}</td>
+                <td>{{ message.contenu }}</td>
+                <td>{{ message.envoyeur }}</td>
+                <td>{{ message.destinataire }}</td>
+                <td>
+                    <a href="{{ path('message_show', {'id': message.id, 'idUser' : idUser}) }}">show</a>
+                    <a href="{{ path('message_repondre', {'id': message.id, 'idUser' : idUser}) }}">Répondre</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('user_show', {'id': idUser}) }}">Retour</a>
+    <a href="{{ path('message_new', {'id': null, 'idUser': idUser }) }}">Create new</a>
+{% endblock %}

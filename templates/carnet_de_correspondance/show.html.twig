@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarnetDeCorrespondance{% endblock %}
+
+{% block body %}
+    <h1>Carnet de correspondance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carnet_de_correspondance.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Contenu</th>
+        </tr>
+        {% for objet in carnet_de_correspondance.objetCarnets %}
+
+            <tr>
+                <td>
+                    {{ objet.type }}
+                </td>
+                <td>
+                    {{ objet.contenu }}
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+    <a href="{{ path('carnet_de_correspondance_index') }}">back to list</a>
+
+    <a href="{{ path('carnet_de_correspondance_edit', {'id': carnet_de_correspondance.id}) }}">edit</a>
+
+    {{ include('carnet_de_correspondance/_delete_form.html.twig') }}
+{% endblock %}

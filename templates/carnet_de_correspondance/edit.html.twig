@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CarnetDeCorrespondance{% endblock %}
+
+{% block body %}
+    <h1>Edit CarnetDeCorrespondance</h1>
+
+    {{ include('carnet_de_correspondance/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('carnet_de_correspondance_index') }}">back to list</a>
+
+    {{ include('carnet_de_correspondance/_delete_form.html.twig') }}
+{% endblock %}
