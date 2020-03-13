@@ -1,0 +1,16 @@
+{% block body %}
+
+    {% if app.user != null %}
+
+        <a href="{{ path('user_show', {'id': app.user.id}) }}">Mes enfants</a>
+        <td><a href="{{ path('message_index', {'id':app.user.id}) }}">Mes messages</a></td>
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+
+    {% else %}
+
+        <a href="{{ path('app_login') }}">Se connecter</a>
+
+    {% endif %}
+
+
+{% endblock %}

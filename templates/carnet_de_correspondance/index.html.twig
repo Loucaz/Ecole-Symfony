@@ -3,6 +3,7 @@
 {% block title %}CarnetDeCorrespondance index{% endblock %}
 
 {% block body %}
+    {% include 'menu.html.twig' %}
     <h1>CarnetDeCorrespondance index</h1>
 
     <table class="table">
@@ -20,7 +21,7 @@
                 <td>{{ carnet_de_correspondance.etat ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('carnet_de_correspondance_show', {'id': carnet_de_correspondance.id}) }}">show</a>
-                    <a href="{{ path('carnet_de_correspondance_edit', {'id': carnet_de_correspondance.id}) }}">edit</a>
+                    <!--<a href="{{ path('carnet_de_correspondance_edit', {'id': carnet_de_correspondance.id}) }}">edit</a>-->
                 </td>
             </tr>
         {% else %}

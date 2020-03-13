@@ -4,7 +4,11 @@
 
 {% block body %}
     {#    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>#}
+
+    {% include 'menu.html.twig' %}
+
     <h1>User index</h1>
+
 
     <table class="table">
         <thead>
@@ -48,6 +52,10 @@
         {% endfor %}
         </tbody>
     </table>
+    {% for role in app.user.roles %}
+        {% if role == "ROLE_ADMIN" %}
+            <a href="{{ path('user_new') }}">Create new</a>
+        {% endif %}
+    {% endfor %}
 
-    <a href="{{ path('user_new') }}">Create new</a>
 {% endblock %}

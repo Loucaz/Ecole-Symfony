@@ -3,6 +3,7 @@
 {% block title %}Enfant{% endblock %}
 
 {% block body %}
+    {% include 'menu.html.twig' %}
     <h1>Enfant</h1>
 
     <table class="table">
@@ -46,8 +47,8 @@
                     {% for classe in enfant.classes %}
                         {% if classe.etat == true %}
                             <tr>
-                                <td>{{ classe.maitre.nom }}</td>
-                                <td>{{ classe.maitre.prenom }}</td>
+                                <td>{{ classe.maitre }}</td>
+                                <td>{{ classe.maitre }}</td>
                                 <td><a href="{{ path('message_new',{'idUser':idUser}) }}">Contacter</a></td>
                             </tr>
                         {% endif %}

@@ -28,6 +28,7 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $user;
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -72,6 +73,7 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new CustomUserMessageAuthenticationException('Email could not be found.');
         }
 
+        $this->user = $user;
         return $user;
     }
 
@@ -93,9 +95,17 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
+        $roles = $this->user->getRoles();
+        foreach ($roles as $role) {
+            if ($role == "ROLE_ADMIN") {
+                return new RedirectResponse($this->urlGenerator->generate('user_index'));
+            }
+        }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('user_index'));
+        return new RedirectResponse($this->urlGenerator->generate('user_show', [
+            'id' => $this->user->getId(),
+        ]));
+
     }
 
     protected function getLoginUrl()

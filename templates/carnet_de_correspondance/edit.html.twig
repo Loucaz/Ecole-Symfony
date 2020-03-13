@@ -3,6 +3,7 @@
 {% block title %}Edit CarnetDeCorrespondance{% endblock %}
 
 {% block body %}
+    {% include 'menu.html.twig' %}
     <h1>Edit CarnetDeCorrespondance</h1>
 
     {{ include('carnet_de_correspondance/_form.html.twig', {'button_label': 'Update'}) }}

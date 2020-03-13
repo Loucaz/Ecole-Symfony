@@ -3,11 +3,14 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
+
+    {% include 'menu.html.twig' %}
+
     <h1>User</h1>
 
     <table class="table">
         <tbody>
-            <tr>
+        <!--<tr>
                 <th>Id</th>
                 <td>{{ user.id }}</td>
             </tr>
@@ -18,7 +21,7 @@
             <tr>
                 <th>Roles</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
+            </tr>-
             <tr>
                 <th>Nom</th>
                 <td>{{ user.nom }}</td>
@@ -26,7 +29,7 @@
             <tr>
                 <th>Prenom</th>
                 <td>{{ user.prenom }}</td>
-            </tr>
+            </tr>-->
             <tr>
                 <th>Enfants</th>
                 <td>
@@ -49,9 +52,13 @@
         </tbody>
     </table>
 
-    <a href="{{ path('user_index') }}">back to list</a>
+    {% for role in app.user.roles %}
+        {% if role == "ROLE_ADMIN" %}
+            <a href="{{ path('user_index') }}">back to list</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+            <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+        {% endif %}
+    {% endfor %}
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

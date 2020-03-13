@@ -3,6 +3,7 @@
 {% block title %}Edit PhotoDeClasse{% endblock %}
 
 {% block body %}
+    {% include 'menu.html.twig' %}
     <h1>Edit PhotoDeClasse</h1>
 
     {{ include('photo_de_classe/_form.html.twig', {'button_label': 'Update'}) }}

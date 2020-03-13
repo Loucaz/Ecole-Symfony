@@ -3,6 +3,7 @@
 {% block title %}Edit Enfant{% endblock %}
 
 {% block body %}
+    {% include 'menu.html.twig' %}
     <h1>Edit Enfant</h1>
 
     {{ include('enfant/_form.html.twig', {'button_label': 'Update'}) }}

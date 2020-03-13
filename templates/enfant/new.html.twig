@@ -3,6 +3,7 @@
 {% block title %}New Enfant{% endblock %}
 
 {% block body %}
+    {% include 'menu.html.twig' %}
     <h1>Create new Enfant</h1>
 
     {{ include('enfant/_form.html.twig') }}
