@@ -1,5 +1,7 @@
 {% block body %}
 
+    <a href="{{ path('main_index') }}">Accueil</a>
+
     {% if app.user != null %}
 
         <a href="{{ path('user_show', {'id': app.user.id}) }}">Mes enfants</a>
