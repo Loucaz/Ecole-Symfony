@@ -31,7 +31,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
-     * @IsGranted("ROLE_ADMIN", statusCode=404, message="Post not found")
+     *
      */
     public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
