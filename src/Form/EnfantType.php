@@ -15,9 +15,7 @@ class EnfantType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('parents')
-            ->add('classes')
-            ->add('carnetDeCorrespondance')
-        ;
+            ->add('classes');
     }
 
     public function configureOptions(OptionsResolver $resolver)
