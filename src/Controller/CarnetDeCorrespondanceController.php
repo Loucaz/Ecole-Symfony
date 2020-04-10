@@ -49,12 +49,14 @@ class CarnetDeCorrespondanceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="carnet_de_correspondance_show", methods={"GET"})
+     * @Route("/{id}{idEnfant}{idUser}", name="carnet_de_correspondance_show", methods={"GET"})
      */
-    public function show(CarnetDeCorrespondance $carnetDeCorrespondance): Response
+    public function show(CarnetDeCorrespondance $carnetDeCorrespondance, $idEnfant,$idUser): Response
     {
         return $this->render('carnet_de_correspondance/show.html.twig', [
             'carnet_de_correspondance' => $carnetDeCorrespondance,
+            'idEnfant' => $idEnfant,
+            'idUser' => $idUser,
         ]);
     }
 
