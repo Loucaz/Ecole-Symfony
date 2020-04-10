@@ -39,7 +39,7 @@ class EnfantController extends AbstractController
             $entityManager->persist($enfant);
             $entityManager->flush();
 
-            return $this->redirectToRoute('enfant_index');
+            return $this->redirectToRoute('main_index');
         }
 
         return $this->render('enfant/new.html.twig', [
