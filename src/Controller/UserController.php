@@ -28,6 +28,10 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> ccb314c2a73bf786633eadd060300cce3dad07d2
      */
     public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
