@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Classe{% endblock %}
-
 {% block body %}
-    <h1>Classe</h1>
+    {% include 'menu.html.twig' %}
+    <div class="container">
+        <br>
+        <h1>Classe</h1>
 
-    <table class="table">
-        <tbody>
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ classe.id }}</td>
@@ -19,12 +20,24 @@
                 <th>Annee</th>
                 <td>{{ classe.annee }}</td>
             </tr>
-        </tbody>
-    </table>
+            <tr>
+                <th>Elèves</th>
+                {% for enfant in classe.enfants %}
+                    <tr>
+                        <td>{{ enfant.nom }}</td>
+                        <td>{{ enfant.prenom }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('classe_index') }}">back to list</a>
+        <a href="{{ path('classe_index') }}" class="btn btn-primary" >Retour</a>
 
-    <a href="{{ path('classe_edit', {'id': classe.id}) }}">edit</a>
-
-    {{ include('classe/_delete_form.html.twig') }}
+        <a href="{{ path('classe_edit', {'id': classe.id}) }}" class="btn btn-primary">edit</a>
+    </div>
 {% endblock %}

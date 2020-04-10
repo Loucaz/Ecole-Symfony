@@ -166,4 +166,10 @@ class Classe
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->nom . " " . $this->annee;
+        // TODO: Implement __toString() method.
+    }
 }
