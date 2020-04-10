@@ -14,6 +14,7 @@ class EnfantType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
+            ->add('parents')
             ->add('classes');
     }
 
