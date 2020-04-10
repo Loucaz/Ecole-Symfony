@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/classe")
@@ -17,6 +19,7 @@ class ClasseController extends AbstractController
 {
     /**
      * @Route("/", name="classe_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", statusCode=404, message="Post not found")
      */
     public function index(ClasseRepository $classeRepository): Response
     {
@@ -27,6 +30,7 @@ class ClasseController extends AbstractController
 
     /**
      * @Route("/new", name="classe_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", statusCode=404, message="Post not found")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +54,7 @@ class ClasseController extends AbstractController
 
     /**
      * @Route("/{id}", name="classe_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", statusCode=404, message="Post not found")
      */
     public function show(Classe $classe): Response
     {
@@ -60,6 +65,7 @@ class ClasseController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="classe_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", statusCode=404, message="Post not found")
      */
     public function edit(Request $request, Classe $classe): Response
     {
@@ -80,6 +86,7 @@ class ClasseController extends AbstractController
 
     /**
      * @Route("/{id}", name="classe_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN", statusCode=404, message="Post not found")
      */
     public function delete(Request $request, Classe $classe): Response
     {

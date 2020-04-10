@@ -12,7 +12,6 @@
                     <a class="nav-link" href="{{ path('main_index') }}">Accueil</a>
                 </li>
 
-
                 {% if app.user != null %}
 
                     <li class="nav-item active">
@@ -24,9 +23,13 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                     </li>
-
-
-
+                    {% for role in app.user.roles %}
+                        {% if role == "ROLE_ADMIN" %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path('classe_index') }}">Gérer les classes</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
 
                 {% else %}
                     <li class="nav-item active">
@@ -35,7 +38,14 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('user_new') }}">Inscription</a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('enfant_new') }}">Inscrire mon enfant</a>
+                    </li>
                 {% endif %}
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('main_information') }}">Informations</a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include 'menu.html.twig' %}
+    <br>
+    <div class="container">
+        <h1>Informations</h1>
+        <div>
+            L’école XX est située dans la ville de Bourg en Bresse, sur l'avenue Alsace Lorraine.
+        </div>
+        <br>
+        <div>
+            <h5>Horraires :</h5>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Jour</th>
+                    <th>Matin</th>
+                    <th>Après-midi</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Lundi</td>
+                    <td>8h30-11h30</td>
+                    <td>13h15-16h30</td>
+                </tr>
+                <tr>
+                    <td>Mardi</td>
+                    <td>8h30-11h30</td>
+                    <td>13h15-16h30</td>
+                </tr>
+                <tr>
+                    <td>Mercredi</td>
+                    <td>--Repos--</td>
+                    <td>--Repos--</td>
+                </tr>
+                <tr>
+                    <td>Jeudi</td>
+                    <td>8h30-11h30</td>
+                    <td>13h15-16h30</td>
+                </tr>
+                <tr>
+                    <td>Vendredi</td>
+                    <td>8h30-11h30</td>
+                    <td>13h15-16h30</td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <br>
+        <div>
+            <h5>Adresse :</h5>
+            XX avenue Alsace Lorraine
+            01000 Bourg-en Bresse
+        </div>
+        <br>
+        <div>
+            <h5>Numéro de téléphone :</h5>
+            XX.XX.XX.XX.XX
+        </div>
+        <br>
+        <div>
+            <h5>Mail :</h5>
+            xxx@xxx.fr
+        </div>
+        <br>
+
+    </div>
+
+{% endblock %}
