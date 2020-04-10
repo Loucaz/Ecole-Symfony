@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
-
 {% block body %}
     {#    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>#}
 
@@ -11,7 +9,7 @@
 
 
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Email</th>
