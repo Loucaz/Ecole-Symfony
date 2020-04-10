@@ -13,8 +13,7 @@ class EnfantType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prenom')
-            ->add('classes');
+            ->add('prenom');
     }
 
     public function configureOptions(OptionsResolver $resolver)

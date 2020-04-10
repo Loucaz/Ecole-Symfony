@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Message{% endblock %}
 
 {% block body %}
     {% include 'menu.html.twig' %}
-    <h1>Create new Message</h1>
+    <br>
+    <div class="container">
+        <h1>Envoyer un message</h1>
 
-    Envoyeur : {{ message.envoyeur }}
-    {{ include('message/_form.html.twig') }}
+        Envoyeur : {{ message.envoyeur }}
+        {{ include('message/_form.html.twig') }}
+        <br>
+        <a href="{{ path('message_index', {'id':idUser}) }}" class="btn btn-primary">Retour</a>
+    </div>
 
-    <a href="{{ path('message_index', {'id':idUser}) }}">Retour</a>
 {% endblock %}

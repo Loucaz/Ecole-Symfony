@@ -39,8 +39,8 @@
                 <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-primary">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -50,10 +50,5 @@
         {% endfor %}
         </tbody>
     </table>
-    {% for role in app.user.roles %}
-        {% if role == "ROLE_ADMIN" %}
-            <a href="{{ path('user_new') }}">Create new</a>
-        {% endif %}
-    {% endfor %}
 
 {% endblock %}
