@@ -24,7 +24,8 @@ class UserType extends AbstractType
             ])*/
             ->add('password', PasswordType::class)
             ->add('nom')
-            ->add('prenom')//->add('enfants')
+            ->add('prenom')
+            ->add('enfants')
         ;
     }
 
