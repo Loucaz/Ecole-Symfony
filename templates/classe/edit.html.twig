@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Classe{% endblock %}
-
 {% block body %}
-    <h1>Edit Classe</h1>
+    {% include 'menu.html.twig' %}
+    <br>
+    <div class="container">
+        <h1>Modifier la classe</h1>
 
-    {{ include('classe/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('classe/_form.html.twig', {'button_label': 'Update'}) }}
+        <br>
+        <a href="{{ path('classe_index') }}" class="btn btn-primary">Retour</a>
+    </div>
 
-    <a href="{{ path('classe_index') }}">back to list</a>
 
-    {{ include('classe/_delete_form.html.twig') }}
 {% endblock %}
