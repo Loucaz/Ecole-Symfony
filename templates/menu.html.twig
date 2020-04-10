@@ -12,7 +12,6 @@
                     <a class="nav-link" href="{{ path('main_index') }}">Accueil</a>
                 </li>
 
-
                 {% if app.user != null %}
 
                     <li class="nav-item active">
@@ -36,6 +35,10 @@
                         <a class="nav-link" href="{{ path('user_new') }}">Inscription</a>
                     </li>
                 {% endif %}
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('main_information') }}">Informations</a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -16,4 +16,12 @@ class MainController extends AbstractController
     {
         return $this->render('main/index.html.twig');
     }
+
+    /**
+     * @Route("/information", name="main_information", methods={"GET"})
+     */
+    public function contact(AuthenticationUtils $authenticationUtils): Response
+    {
+        return $this->render('main/information.html.twig');
+    }
 }
