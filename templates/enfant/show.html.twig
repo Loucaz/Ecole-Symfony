@@ -19,12 +19,14 @@
                 <th>Prenom</th>
                 <td>{{ enfant.prenom }}</td>
             </tr>
-            <tr>
-                <th>Carnet de correspondance</th>
+            {% if enfant.carnetDeCorrespondance != null %}
+                <tr>
+                    <th>Carnet de correspondance</th>
 
-                <td>{{ enfant.carnetDeCorrespondance.id }}</td>
-                <td><a href="{{ path('carnet_de_correspondance_show', {'id': enfant.carnetDeCorrespondance.id, 'idEnfant' : enfant.id, 'idUser':idUser}) }}" class="btn btn-primary">Voir</a></td>
-            </tr>
+                    <td>{{ enfant.carnetDeCorrespondance.id }}</td>
+                    <td><a href="{{ path('carnet_de_correspondance_show', {'id': enfant.carnetDeCorrespondance.id, 'idEnfant' : enfant.id, 'idUser':idUser}) }}" class="btn btn-primary">Voir</a></td>
+                </tr>
+            {% endif %}
             <tr>
                 <th>Photo de classe</th>
                 <td>

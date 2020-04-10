@@ -70,6 +70,7 @@ class ClasseController extends AbstractController
      */
     public function edit(Request $request, Classe $classe): Response
     {
+        var_dump($classe->getEnfants());
         $form = $this->createForm(ClasseType::class, $classe);
         $form->handleRequest($request);
 
