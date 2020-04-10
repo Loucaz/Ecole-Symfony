@@ -1,41 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Message index{% endblock %}
+{% block title %}Mes messages{% endblock %}
 
 {% block body %}
     {% include 'menu.html.twig' %}
-    <h1>Message index</h1>
+    <div class="container">
+        <br>
+        <h1>Mes messages</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table table-striped">
+            <thead class="thead-dark">
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
                 <th>Contenu</th>
                 <th>Envoyeur</th>
                 <th>Destinataire</th>
+                <th></th>
             </tr>
-        </thead>
-        <tbody>
-        {% for message in messages %}
-            <tr>
-                <td>{{ message.id }}</td>
-                <td>{{ message.titre }}</td>
-                <td>{{ message.contenu }}</td>
-                <td>{{ message.envoyeur }}</td>
-                <td>{{ message.destinataire }}</td>
-                <td>
-                    <a href="{{ path('message_show', {'id': message.id, 'idUser' : idUser}) }}">show</a>
-                    <a href="{{ path('message_repondre', {'id': message.id, 'idUser' : idUser}) }}">Répondre</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('user_show', {'id': idUser}) }}">Retour</a>
-    <a href="{{ path('message_new', {'id': null, 'idUser': idUser }) }}">Create new</a>
+            </thead>
+            <tbody>
+            {% for message in messages %}
+                <tr>
+                    <td>{{ message.titre }}</td>
+                    <td>{{ message.contenu }}</td>
+                    <td>{{ message.envoyeur }}</td>
+                    <td>{{ message.destinataire }}</td>
+                    <td>
+                        <a href="{{ path('message_show', {'id': message.id, 'idUser' : idUser}) }}"
+                           class="btn btn-primary">Voir</a>
+                        <a href="{{ path('message_repondre', {'id': message.id, 'idUser' : idUser}) }}"
+                           class="btn btn-primary">Répondre</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('user_show', {'id': idUser}) }}" class="btn btn-primary">Retour</a>
+        <a href="{{ path('message_new', {'id': null, 'idUser': idUser }) }}" class="btn btn-primary">Créer un nouveau
+            message</a>
+    </div>
+
 {% endblock %}

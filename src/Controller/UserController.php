@@ -9,9 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/user")
@@ -31,7 +28,6 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
-     * @IsGranted("ROLE_ADMIN", statusCode=404, message="Post not found")
      */
     public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
@@ -75,6 +71,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->addRole("ROLE_USER");
             $encoded = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encoded);
             $this->getDoctrine()->getManager()->flush();

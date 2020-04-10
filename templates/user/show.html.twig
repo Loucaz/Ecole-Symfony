@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
 
     {% include 'menu.html.twig' %}
+    <div class="container">
+        <br>
+        <h1>Mon profil</h1>
 
-    <h1>User</h1>
-
-    <table class="table">
-        <tbody>
-        <!--<tr>
+        <table class="table">
+            <tbody>
+            <thead class="thead-dark"></thead>
+            <!--<tr>
                 <th>Id</th>
                 <td>{{ user.id }}</td>
             </tr>
@@ -31,34 +33,39 @@
                 <td>{{ user.prenom }}</td>
             </tr>-->
             <tr>
-                <th>Enfants</th>
+                <th>Mes enfants</th>
                 <td>
-                    <table>
-                        {% for enfant in user.enfants %}
-                            <tr>
-                                <td>{{ enfant.nom }}</td>
-                                <td>{{ enfant.prenom }}</td>
-                                <td><a href="{{ path('enfant_show', {'id': enfant.id, 'idUser' : user.id}) }}">Voir</a></td>
-                            </tr>
-                        {% endfor %}
+                    <table class="table">
+                        {% if user.enfants != null %}
+                            {% for enfant in user.enfants %}
+                                <tr>
+                                    <td>{{ enfant.nom }}</td>
+                                    <td>{{ enfant.prenom }}</td>
+                                    <td><a href="{{ path('enfant_show', {'id': enfant.id, 'idUser' : user.id}) }}"
+                                           class="btn btn-primary">Voir</a></td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+
                     </table>
                 </td>
             </tr>
-        <tr>
-            <th>Messagerie</th>
-            <td><a href="{{ path('message_index', {'id':user.id}) }}">Consulter</a></td>
-        </tr>
+            <tr>
+                <th>Messagerie</th>
+                <td><a href="{{ path('message_index', {'id':user.id}) }}" class="btn btn-primary">Consulter</a></td>
+            </tr>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    {% for role in app.user.roles %}
-        {% if role == "ROLE_ADMIN" %}
-            <a href="{{ path('user_index') }}">back to list</a>
+        {% for role in app.user.roles %}
+            {% if role == "ROLE_ADMIN" %}
+                <a href="{{ path('user_index') }}" class="btn btn-primary">Voir liste utilisateur</a>
 
-            <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-        {% endif %}
+                <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-primary">edit</a>
+            {% endif %}
     {% endfor %}
 
-    {{ include('user/_delete_form.html.twig') }}
+
+    </div>
 {% endblock %}
