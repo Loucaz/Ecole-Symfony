@@ -3,8 +3,15 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-<div class="row d-flex justify-content-center mt-5">
+<div class="text-center mt-5">
     <h1>Articles de l'ecole</h1>
+    {% if app.user != null %}
+        {% for role in app.user.roles %}
+            {% if role == "ROLE_ADMIN" %}
+                <a href="{{ path('article_new') }}" class="btn btn-primary mt-5  ">Create new</a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 <div class="row">
 
 
@@ -22,24 +29,19 @@
             {% if app.user != null %}
                 {% for role in app.user.roles %}
                     {% if role == "ROLE_ADMIN" %}
-                        <a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-primary">show</a>
-                        <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary">edit</a>
+                        <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary">Editer</a>
                     {% endif %}
                 {% endfor %}
             {% endif %}
         </div>
     </div>
     </div>
+        {% else%}
+                <div colspan="4">no records found</div>
     {% endfor %}
 </div>
 
-    {% if app.user != null %}
-        {% for role in app.user.roles %}
-            {% if role == "ROLE_ADMIN" %}
-                <a href="{{ path('article_new') }}" class="btn btn-primary mt-5 ">Create new</a>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+
 </div>
 
 {% endblock %}
