@@ -15,7 +15,7 @@ class MainController extends AbstractController
      */
     public function index(AuthenticationUtils $authenticationUtils,ArticleRepository $articleRepository): Response
     {
-        return $this->render('main/index.html.twig','article/index.html.twig', [
+        return $this->render('main/index.html.twig', [
         'articles' => $articleRepository->findAll(),
     ]);
     }
