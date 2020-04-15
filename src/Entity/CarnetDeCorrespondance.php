@@ -98,4 +98,9 @@ class CarnetDeCorrespondance
 
         return $this;
     }
+
+    public function __toString(){
+        return $this->id." ".$this->etat;
+        // TODO: Implement __toString() method.
+    }
 }

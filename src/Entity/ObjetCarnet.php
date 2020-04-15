@@ -71,4 +71,9 @@ class ObjetCarnet
 
         return $this;
     }
+
+    public function __toString(){
+        return $this->type." ".$this->id;
+        // TODO: Implement __toString() method.
+    }
 }
